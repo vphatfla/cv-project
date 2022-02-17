@@ -1,7 +1,9 @@
 import React, {Component} from "react";
+import Education from "./education";
 import Experience from "./experience";
 import InputFiledRender from "./inputFieldRender";
 import Preview from "./preview";
+import uniqid from "uniqid";
 
 class Edit extends Component {
     constructor(props){
@@ -12,7 +14,12 @@ class Edit extends Component {
             address: "",
             phoneNumber: "",
             email: "",
-            experience: [],
+            experience: [
+                []
+            ],
+            education: [
+                []
+            ],
         }
     }
 
@@ -24,20 +31,69 @@ class Edit extends Component {
         })
         
     }
-
+    // experience
     updateExperience = (indexOfEx, arrayFromChild) => {
-        const newArray = this.state.experience.slice();
+        const newArray = this.state.experience;
         newArray[indexOfEx] = arrayFromChild;
         this.setState({
             experience: newArray
-        }, () => {
-            console.table(this.state.experience)
         })
     }
+
+    addExperienceButtonHandling = () =>{
+        const temp = this.state.experience;
+        
+        temp.push([]);
+        temp[temp.length-1][6] = uniqid();
+        this.setState(
+            {
+                experience: temp
+            }
+        )
+    }
+
+    deleteExperienceButtonHandling = (indexOfEx) => {
+        const temp = this.state.experience;
+        temp.splice(indexOfEx,1);
+
+        this.setState({
+            experience: temp
+        })
+    }
+    // education (same with experience, different names)
+    updateEducation = (indexOfEdu, arrayFromChild) => {
+        const newArray = this.state.education;
+        newArray[indexOfEdu] = arrayFromChild;
+        this.setState({
+            education: newArray
+        })
+        
+    }
+
+    addEducationButtonHandling = () => {
+        const temp = this.state.education;
+
+        temp.push([]);
+        this.setState({
+            education: temp
+        })
+    }
+
+    deleteEducationButtonHandling = (indexOfEdu) => {
+        const temp = this.state.education;
+
+        temp.splice(indexOfEdu,1);
+
+        this.setState({
+            education: temp
+        })
+    }
+    
     render(){
-        const {name, title,address,phoneNumber,email,
-        experience} = this.state;
-        let indexOfEx = 0;
+        const {name, title,address,phoneNumber,email, experience, education} = this.state;
+        
+        const temp = experience;
+        temp[0][6] = uniqid();
         return(
             <div>
             <div className="edit">
@@ -49,13 +105,22 @@ class Edit extends Component {
                     <InputFiledRender nameOfInput="Address" stateVariable="email"  updateValue={this.updateValue}/>
                 </div>
                 <div className="experienceInput">
-                    <Experience experience={experience} indexOfEx={indexOfEx} updateExperience={this.updateExperience} />
-                    <button>Add Expericne</button>
+                        {experience.map( (ar, index) => {
+                            <Experience key={ar[6]} indexOfEx={index} updateExperience={this.updateExperience}
+                            deleteExperienceButtonHandling={this.deleteExperienceButtonHandling}/>
+                            
+                        })}
+                        <button onClick={this.addExperienceButtonHandling}>Add Experience</button>                        
                 </div>
                 
+                <div className="educationInput">
+                    {education.map( (ar,index) => <Education key={index} indexOfEdu={index}
+                    updateEducation={this.updateEducation} deleteEducationButtonHandling={this.deleteEducationButtonHandling} />)}
+                    <button onClick={this.addEducationButtonHandling}>Add Education</button>
+                </div>
             </div>
             <Preview 
-            {...{name, title, address,phoneNumber, email, experience}}/>
+            {...{name, title, address,phoneNumber, email, experience, education}}/>
             </div>
         )
     }

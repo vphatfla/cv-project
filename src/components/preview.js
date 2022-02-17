@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import EducationReview from "./educationPreview";
 import ExperienceReview from "./experienceReview";
 
 class Preview extends Component{
@@ -7,7 +8,7 @@ class Preview extends Component{
     }
 
     render(){
-        const {name, title, address, phoneNumber, email, experience} = this.props;
+        const {name, title, address, phoneNumber, email, experience, education} = this.props;
         return(
             <div className="preview">
                 <div className="personalInfoPreview">
@@ -23,11 +24,18 @@ class Preview extends Component{
                     </div>
                 </div>
 
-                <div className="experience">
+                <div className="experiencePreview">
                     {
-                        experience.map((exp) => 
-                            <ExperienceReview exp={exp} />
+                        experience.map((exp, index) => 
+                            <ExperienceReview exp={exp} key={index}/>
                     )
+                    }
+                </div>
+
+                <div className="educationPreview">
+                    {
+                        education.map( (edu, index) => 
+                        <EducationReview edu={edu} key={index}/>)
                     }
                 </div>
             </div>

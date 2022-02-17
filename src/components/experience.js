@@ -29,6 +29,11 @@ class Experience extends Component{
         });
     }
     // use call back above because setstate is ayns
+    // delete button function
+    deleteButtonHandling = () => {
+        const indexOfEx = this.props.indexOfEx;
+        this.props.deleteExperienceButtonHandling(indexOfEx);
+    }
     render(){
         const {position,company,city,from,to,description} = this.state;
         
@@ -41,6 +46,7 @@ class Experience extends Component{
                 <InputFiledRender nameOfInput="From" stateVariable="from" updateValue={this.updateValue}/>
                 <InputFiledRender nameOfInput="To" stateVariable="to" updateValue={this.updateValue}/>
                 <InputFiledRender nameOfInput="Description" stateVariable="description" updateValue={this.updateValue}/>
+                <button onClick={this.deleteButtonHandling}>Delete</button>
             </div>
         )
     }

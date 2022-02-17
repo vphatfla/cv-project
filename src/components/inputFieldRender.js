@@ -8,9 +8,10 @@ class InputFiledRender extends Component {
         }
     }
     handleChange = (e) => {
+        e.preventDefault();
         const {stateVariable} = this.props;
         if (stateVariable) this.props.updateValue(stateVariable, e.target.value); // update state of edit.js
-
+        
         // custome update alue for experience js
         const {indexOfEx, indexOfVariable} = this.props;
         if (indexOfEx) {
@@ -25,7 +26,6 @@ class InputFiledRender extends Component {
     }
     render(){
         const {nameOfInput} = this.props;
-        
         return(
             <div>
                 <form>

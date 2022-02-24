@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import EducationReview from "./educationPreview";
 import ExperienceReview from "./experienceReview";
-
+import uniqid from "uniqid";
 class Preview extends Component{
     constructor(props){
         super(props);
@@ -26,16 +26,22 @@ class Preview extends Component{
 
                 <div className="experiencePreview">
                     {
-                        experience.map((exp, index) => 
-                            <ExperienceReview exp={exp} key={index}/>
+                        experience.map((exp, index) => {
+                            if (exp !== 0 ) return <ExperienceReview exp={exp} key={index}/>
+                            return false;
+                        }
                     )
                     }
                 </div>
 
                 <div className="educationPreview">
                     {
-                        education.map( (edu, index) => 
-                        <EducationReview edu={edu} key={index}/>)
+                        education.map( (edu, index) =>  {
+                            if (edu!==0) return <EducationReview edu={edu} key={index}/>
+                            return false;
+                    }
+                    )
+                        
                     }
                 </div>
             </div>

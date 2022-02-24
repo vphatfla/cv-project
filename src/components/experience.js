@@ -36,7 +36,6 @@ class Experience extends Component{
     }
     render(){
         const {position,company,city,from,to,description} = this.state;
-        
         return(
             
             <div className="experience">
@@ -49,6 +48,7 @@ class Experience extends Component{
                 <button onClick={this.deleteButtonHandling}>Delete</button>
             </div>
         )
+        
     }
 }
 

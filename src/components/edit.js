@@ -44,7 +44,6 @@ class Edit extends Component {
         const temp = this.state.experience;
         
         temp.push([]);
-        temp[temp.length-1][6] = uniqid();
         this.setState(
             {
                 experience: temp
@@ -53,9 +52,8 @@ class Edit extends Component {
     }
 
     deleteExperienceButtonHandling = (indexOfEx) => {
-        const temp = this.state.experience;
-        temp.splice(indexOfEx,1);
-
+        let temp = this.state.experience;
+        temp[indexOfEx] = 0;
         this.setState({
             experience: temp
         })
@@ -82,7 +80,7 @@ class Edit extends Component {
     deleteEducationButtonHandling = (indexOfEdu) => {
         const temp = this.state.education;
 
-        temp.splice(indexOfEdu,1);
+        temp[indexOfEdu] =0;
 
         this.setState({
             education: temp
@@ -92,32 +90,39 @@ class Edit extends Component {
     render(){
         const {name, title,address,phoneNumber,email, experience, education} = this.state;
         
-        const temp = experience;
-        temp[0][6] = uniqid();
+        
         return(
             <div>
             <div className="edit">
-                <div className="personalInfoInput">
+             {/*<div className="personalInfoInput">
                     <InputFiledRender nameOfInput="Name" stateVariable="name" updateValue={this.updateValue}/>
                     <InputFiledRender nameOfInput="Title" stateVariable="title" updateValue={this.updateValue}/>
                     <InputFiledRender nameOfInput="Email" stateVariable="address" updateValue={this.updateValue}/>
                     <InputFiledRender nameOfInput="Phone number" stateVariable="phoneNumber"  updateValue={this.updateValue}/>
                     <InputFiledRender nameOfInput="Address" stateVariable="email"  updateValue={this.updateValue}/>
-                </div>
+        </div>  */}
                 <div className="experienceInput">
-                        {experience.map( (ar, index) => {
-                            <Experience key={ar[6]} indexOfEx={index} updateExperience={this.updateExperience}
+                        {experience.map( (ar, index) => 
+                        {
+                            if (ar!== 0) return <Experience key={index} indexOfEx={index} updateExperience={this.updateExperience}
                             deleteExperienceButtonHandling={this.deleteExperienceButtonHandling}/>
-                            
-                        })}
+                            return false;
+                        }
+                        )}
                         <button onClick={this.addExperienceButtonHandling}>Add Experience</button>                        
                 </div>
                 
-                <div className="educationInput">
-                    {education.map( (ar,index) => <Education key={index} indexOfEdu={index}
-                    updateEducation={this.updateEducation} deleteEducationButtonHandling={this.deleteEducationButtonHandling} />)}
+                 <div className="educationInput">
+                    {education.map( (ar,index) => 
+                    {
+                    if (ar!==0) return <Education key={index} indexOfEdu={index}
+                    updateEducation={this.updateEducation} deleteEducationButtonHandling={this.deleteEducationButtonHandling} />
+                    return false;
+                    }
+                    )}
+                    
                     <button onClick={this.addEducationButtonHandling}>Add Education</button>
-                </div>
+                 </div> 
             </div>
             <Preview 
             {...{name, title, address,phoneNumber, email, experience, education}}/>

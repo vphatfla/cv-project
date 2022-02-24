@@ -11,6 +11,7 @@ class Preview extends Component{
         const {name, title, address, phoneNumber, email, experience, education} = this.props;
         return(
             <div className="preview">
+                
                 <div className="personalInfoPreview">
                     <div className="namePreview">
                         <h1>{name} | </h1>

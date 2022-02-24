@@ -92,16 +92,20 @@ class Edit extends Component {
         
         
         return(
-            <div>
+            <div className="ctnOutSide">
             <div className="edit">
-             {/*<div className="personalInfoInput">
+                <div className="personalInfoInput">
+                    <h2>Personal Information</h2>
                     <InputFiledRender nameOfInput="Name" stateVariable="name" updateValue={this.updateValue}/>
                     <InputFiledRender nameOfInput="Title" stateVariable="title" updateValue={this.updateValue}/>
                     <InputFiledRender nameOfInput="Email" stateVariable="address" updateValue={this.updateValue}/>
                     <InputFiledRender nameOfInput="Phone number" stateVariable="phoneNumber"  updateValue={this.updateValue}/>
                     <InputFiledRender nameOfInput="Address" stateVariable="email"  updateValue={this.updateValue}/>
-        </div>  */}
+                </div>  
+
                 <div className="experienceInput">
+                    <h1>____________________</h1>
+                    <h2>Experience</h2>
                         {experience.map( (ar, index) => 
                         {
                             if (ar!== 0) return <Experience key={index} indexOfEx={index} updateExperience={this.updateExperience}
@@ -113,6 +117,8 @@ class Edit extends Component {
                 </div>
                 
                  <div className="educationInput">
+                    <h1>____________________</h1>
+                    <h2>Education</h2>
                     {education.map( (ar,index) => 
                     {
                     if (ar!==0) return <Education key={index} indexOfEdu={index}

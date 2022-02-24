@@ -1,0 +1,31 @@
+.ctnOutSide{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  
+}
+.edit{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+.preview{
+    width: 50%;
+}
+label {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 100%;
+    line-height: 26px;
+    margin-bottom: 10px;
+}
+  
+input {
+    height: 20px;
+    flex: 0 0 200px;
+    margin-left: auto;
+}

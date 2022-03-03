@@ -8,23 +8,30 @@ class Preview extends Component{
     }
 
     render(){
-        const {name, title, address, phoneNumber, email, experience, education} = this.props;
+        const {name, address, phoneNumber, email, experience, education} = this.props;
         return(
+            <div className="previewCtn">
             <div className="preview">
                 
                 <div className="personalInfoPreview">
-                    <div className="namePreview">
-                        <h1>{name} | </h1>
-                        <h3>{title}</h3>
+                    <div className="leftSide">
+                        <p>{address}</p>
                     </div>
-                    <div className="underNamePreview">
-                        <h6>{email}</h6>
-                        <h6>{phoneNumber}</h6>
-                        <h6>{address}</h6>
-                        
+
+                    <div className="midSide">
+                        <p>{name}</p>
+                    </div>
+
+                    <div className="rightSide">
+                        <p>{phoneNumber}</p>
+                        <p>{email}</p>
                     </div>
                 </div>
 
+                <div className="breaker">
+                    <p className="titleSection">Experience</p>
+                    <p className="lineBreaker">____________________</p>
+                </div>
                 <div className="experiencePreview">
                     {
                         experience.map((exp, index) => {
@@ -35,6 +42,10 @@ class Preview extends Component{
                     }
                 </div>
 
+                <div className="breaker">
+                    <p className="titleSection">Education</p>
+                    <p className="lineBreaker">____________________</p>
+                </div>
                 <div className="educationPreview">
                     {
                         education.map( (edu, index) =>  {
@@ -45,6 +56,13 @@ class Preview extends Component{
                         
                     }
                 </div>
+            </div>
+            <div class="previewButtons">
+                <button>Load Example</button>
+                <button>Clear</button>
+                {/* work on the button*/}
+            </div>
+            
             </div>
         )
     }

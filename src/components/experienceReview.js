@@ -14,13 +14,22 @@ class ExperienceReview extends Component{
         const to = exp[4];
         const description = exp[5];
         return(
-            <div>
-                <p>{position}</p>
-                <p>{company}</p>
-                <p>{city}</p>
-                <p>{from}</p>
-                <p>{to}</p>
-                <p>{description}</p>
+            <div className="experienceSection">
+                <div className="topSide">
+                    <div class="leftSide">
+                        <p>{position}</p>
+                    </div>
+
+                    <p>{company}</p>
+
+                    <div className="rightSide">
+                        <p>{from}-{to}</p>
+                        <p>{city}</p>
+                    </div>
+                </div>
+                <div className="botSide">
+                    <p>{description}</p>
+                </div>
             </div>
         )
     }

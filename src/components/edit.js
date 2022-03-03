@@ -3,7 +3,7 @@ import Education from "./education";
 import Experience from "./experience";
 import InputFiledRender from "./inputFieldRender";
 import Preview from "./preview";
-import uniqid from "uniqid";
+import exampleData from "./example";
 
 class Edit extends Component {
     constructor(props){
@@ -96,11 +96,10 @@ class Edit extends Component {
             <div className="edit">
                 <div className="personalInfoInput">
                     <h2>Personal Information</h2>
-                    <InputFiledRender nameOfInput="Name" stateVariable="name" updateValue={this.updateValue}/>
-                    <InputFiledRender nameOfInput="Title" stateVariable="title" updateValue={this.updateValue}/>
-                    <InputFiledRender nameOfInput="Email" stateVariable="address" updateValue={this.updateValue}/>
+                    <InputFiledRender nameOfInput="Name" stateVariable="name" updateValue={this.updateValue}/>                    
+                    <InputFiledRender nameOfInput="Email" stateVariable="email" updateValue={this.updateValue}/>
                     <InputFiledRender nameOfInput="Phone number" stateVariable="phoneNumber"  updateValue={this.updateValue}/>
-                    <InputFiledRender nameOfInput="Address" stateVariable="email"  updateValue={this.updateValue}/>
+                    <InputFiledRender nameOfInput="Address" stateVariable="address"  updateValue={this.updateValue}/>
                 </div>  
 
                 <div className="experienceInput">
@@ -130,8 +129,8 @@ class Edit extends Component {
                     <button onClick={this.addEducationButtonHandling}>Add Education</button>
                  </div> 
             </div>
-            <Preview 
-            {...{name, title, address,phoneNumber, email, experience, education}}/>
+                <Preview 
+                {...{name, address,phoneNumber, email, experience, education}}/>
             </div>
         )
     }

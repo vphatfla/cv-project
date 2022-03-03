@@ -14,11 +14,22 @@ class EducationReview extends Component{
         const to = edu[4];
         return(
             <div>
-                <p>{univeristy}</p>
-                <p>{city}</p>
-                <p>{degree}</p>
-                <p>{from}</p>
-                <p>{to}</p>
+                <div className="educationSection">
+                <div className="topSide">
+                    <div class="leftSide">
+                        <p>{city}</p>
+                    </div>
+
+                    <p>{univeristy}</p>
+
+                    <div className="rightSide">
+                        <p>{from}-{to}</p>
+                    </div>
+                </div>
+                <div className="botSide">
+                    <p>{degree}</p>
+                </div>
+            </div>
             </div>
         )
     }

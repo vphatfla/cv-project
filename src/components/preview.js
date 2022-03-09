@@ -1,14 +1,26 @@
 import React, {Component} from "react";
 import EducationReview from "./educationPreview";
 import ExperienceReview from "./experienceReview";
-import uniqid from "uniqid";
+import print from "../printPDF";
 class Preview extends Component{
     constructor(props){
         super(props);
     }
 
+    loadExampleButtonHandling = () => {
+        this.props.setExampleData();
+    }
+    
+    clearDataButtonHandling = () => {
+        this.props.clearData();
+    }
+
+    generatePDFButtonHandling = () =>{
+        print();
+    }
     render(){
         const {name, address, phoneNumber, email, experience, education} = this.props;
+        const {setExampleData} = this.props;
         return(
             <div className="previewCtn">
             <div className="preview">
@@ -19,7 +31,7 @@ class Preview extends Component{
                     </div>
 
                     <div className="midSide">
-                        <p>{name}</p>
+                        <p id="name">{name}</p>
                     </div>
 
                     <div className="rightSide">
@@ -57,12 +69,13 @@ class Preview extends Component{
                     }
                 </div>
             </div>
-            <div class="previewButtons">
-                <button>Load Example</button>
-                <button>Clear</button>
-                {/* work on the button*/}
+            <div className="previewButtons">
+                <button onClick={this.loadExampleButtonHandling}>Load Example</button>
+                <button onClick={this.clearDataButtonHandling}>Clear</button>
             </div>
-            
+            <div className="pdfButton">
+                <button onClick={this.generatePDFButtonHandling}>Generate PDF</button>
+            </div>
             </div>
         )
     }

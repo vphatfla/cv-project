@@ -10,7 +10,6 @@ class Edit extends Component {
         super(props);
         this.state ={
             name: "",
-            title: "",
             address: "",
             phoneNumber: "",
             email: "",
@@ -87,10 +86,46 @@ class Edit extends Component {
         })
     }
     
+    setExampleData = () =>{
+        const exData = exampleData;
+        const personalInformationEx = exampleData[0];
+        const experienceEx = exData[1];
+        const educationEx = exData[2];
+        this.setState({
+            name: personalInformationEx[0],
+            email: personalInformationEx[1],
+            phoneNumber: personalInformationEx[2],
+            address: personalInformationEx[3],
+            experience: experienceEx,
+            education: educationEx,
+        })
+    }
+
+    clearData = () => {
+        this.setState({
+            name: "",
+            address: "",
+            phoneNumber: "",
+            email: "",
+            experience: [
+                []
+            ],
+            education: [
+                []
+            ],
+        })
+    }
     render(){
-        const {name, title,address,phoneNumber,email, experience, education} = this.state;
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            alert("Please use PC with chrome for your best experience");
+        }
+
+        window.onbeforeunload = function() {
+            return "Data will be lost if you leave the page, are you sure?";
+          };
+          
         
-        
+        const {name,address,phoneNumber,email, experience, education} = this.state;
         return(
             <div className="ctnOutSide">
             <div className="edit">
@@ -130,7 +165,11 @@ class Edit extends Component {
                  </div> 
             </div>
                 <Preview 
-                {...{name, address,phoneNumber, email, experience, education}}/>
+                    {
+                    ...{name, address,phoneNumber, email, experience, education}} 
+                    setExampleData = {this.setExampleData}
+                    clearData = {this.clearData}
+                />
             </div>
         )
     }

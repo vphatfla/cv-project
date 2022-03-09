@@ -8,7 +8,8 @@ const exampleData =[
         ],
 
         [
-            "Data Scientist","FIFA Cooperation","NYC","Jun 2018","Mar 2020","Code and play real football"
+            "Data Scientist","FIFA Cooperation","NYC","Jun 2018","Mar 2020",
+            "Code and play real football"
         ],
 
         [

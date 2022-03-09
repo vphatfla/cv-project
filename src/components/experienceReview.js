@@ -16,7 +16,7 @@ class ExperienceReview extends Component{
         return(
             <div className="experienceSection">
                 <div className="topSide">
-                    <div class="leftSide">
+                    <div className="leftSide">
                         <p>{position}</p>
                     </div>
 

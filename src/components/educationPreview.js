@@ -16,7 +16,7 @@ class EducationReview extends Component{
             <div>
                 <div className="educationSection">
                 <div className="topSide">
-                    <div class="leftSide">
+                    <div className="leftSide">
                         <p>{city}</p>
                     </div>
 

@@ -2,6 +2,7 @@
   "name": "cv-project",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://vphatfla.github.io/cv-project",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
@@ -43,7 +44,5 @@
   },
   "devDependencies": {
     "gh-pages": "^3.2.3"
-  },
-  "homepage": "http://vphatfla.github.io/react-gh-pages"
-
+  }
 }

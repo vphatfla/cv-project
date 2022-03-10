@@ -14,6 +14,9 @@ class App extends Component {
           <h1>CV Creator</h1>
         </div>
         <Edit />
+        <div class='footer'>
+            <p>Project from TOP by <a href="https://github.com/vphatfla" target="_blank" rel="noreferrer">Van Phat</a></p>
+        </div>
       </div>
     )
   }
